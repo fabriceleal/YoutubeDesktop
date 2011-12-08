@@ -25,5 +25,11 @@ namespace YoutubeDesktop
                     (uri) => { navigator1.QueryListener(this, new QueryAskedEventArgs(uri, true)); });
             // ---
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.ShowDialog();
+        }
     }
 }

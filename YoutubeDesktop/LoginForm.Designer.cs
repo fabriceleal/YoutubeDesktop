@@ -58,7 +58,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(341, 17);
+            this.button1.Location = new System.Drawing.Point(524, 17);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             this.txToken.Location = new System.Drawing.Point(191, 19);
             this.txToken.Name = "txToken";
-            this.txToken.Size = new System.Drawing.Size(133, 20);
+            this.txToken.Size = new System.Drawing.Size(327, 20);
             this.txToken.TabIndex = 0;
             // 
             // LoginForm
@@ -89,7 +89,9 @@
             this.ClientSize = new System.Drawing.Size(716, 454);
             this.Controls.Add(this.WebBrowser1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel1.ResumeLayout(false);

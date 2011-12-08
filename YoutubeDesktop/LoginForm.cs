@@ -36,10 +36,13 @@ namespace YoutubeDesktop
         {
             try
             {
-                if (YoutubeWeb.AskForTokenFromKey(txToken.Text.Trim()))
-                {
-                    Close();
-                }
+                Assync<Boolean>.Execute(this, 
+                        () => { return YoutubeWeb.AskForTokenFromKey(txToken.Text.Trim()); } ,
+                        (result) => { 
+                            if(result){
+                                Close();
+                            }
+                        });
             }
             catch (Exception ex)
             {

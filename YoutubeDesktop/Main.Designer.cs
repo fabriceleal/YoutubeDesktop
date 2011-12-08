@@ -30,8 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.uriBuilderWithGo1 = new YoutubeDesktop.UriBuilderWithGo();
             this.navigator1 = new YoutubeDesktop.Navigator();
+            this.uriBuilderWithGo1 = new YoutubeDesktop.UriBuilderWithGo();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +58,14 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // navigator1
+            // 
+            this.navigator1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navigator1.Location = new System.Drawing.Point(3, 178);
+            this.navigator1.Name = "navigator1";
+            this.navigator1.Size = new System.Drawing.Size(730, 219);
+            this.navigator1.TabIndex = 1;
+            // 
             // uriBuilderWithGo1
             // 
             this.uriBuilderWithGo1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -67,14 +75,6 @@
             this.uriBuilderWithGo1.TabIndex = 0;
             this.uriBuilderWithGo1.QueryAsked += new YoutubeDesktop.UriBuilderWithGo.DelegateQueryAsked(this.uriBuilderWithGo1_QueryAsked);
             // 
-            // navigator1
-            // 
-            this.navigator1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navigator1.Location = new System.Drawing.Point(3, 178);
-            this.navigator1.Name = "navigator1";
-            this.navigator1.Size = new System.Drawing.Size(730, 219);
-            this.navigator1.TabIndex = 1;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -83,6 +83,8 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Main";
             this.Text = "Main";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
