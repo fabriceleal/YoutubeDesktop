@@ -59,8 +59,12 @@ namespace YoutubeDesktop
                 context.SetParameter("arg1", jsonString);
                 context.SetParameter("obj", null);
                 context.Run(@" obj = JSON.parse(arg1, null); ");
-                
+
                 return context.GetParameter("obj");
+            }
+            catch (AccessViolationException ave)
+            {
+                throw new Exception("Access Violation Exception. Probabily you should restart the app ...");
             }
             catch (Exception ex)
             {
