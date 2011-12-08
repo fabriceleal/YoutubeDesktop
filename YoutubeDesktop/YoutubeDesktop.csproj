@@ -77,11 +77,29 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlaylistControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PlaylistControl.Designer.cs">
       <DependentUpon>PlaylistControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UriBuilderWithGo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UriBuilderWithGo.Designer.cs">
+      <DependentUpon>UriBuilderWithGo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
@@ -216,8 +234,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlaylistControl.resx">
       <DependentUpon>PlaylistControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UriBuilderWithGo.resx">
+      <DependentUpon>UriBuilderWithGo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>

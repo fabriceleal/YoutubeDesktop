@@ -11,43 +11,43 @@ namespace YoutubeDesktop
     {
         public static Dictionary<string, object> pars = new Dictionary<string, object>();
 
-        public static void AskForTokenFromKey(String tmpKey)
+        public static Boolean AskForTokenFromKey(String tmpKey)
         {
-            String postData =
+            try
+            {
+                String postData =
                     @"code=" + tmpKey + "&" +
                     @"client_id=" + Globals.ClientId + "&" +
-                    @"client_secret=" + Globals.ClientSecret + "&" +                    
+                    @"client_secret=" + Globals.ClientSecret + "&" +
                     @"redirect_uri=urn:ietf:wg:oauth:2.0:oob&" +
                     @"grant_type=authorization_code";
-            //String postData =
-            //        @"response_type=code&" +
-            //        @"client_id=" + Globals.ClientId + "&" +
-            //        @"redirect_uri=urn:ietf:wg:oauth:2.0:oob&" +
-            //        @"scope=&"+
-            //        @"client_secret=" + Globals.ClientSecret + "&" +
-            //        @"code=" + tmpKey + "&" +                    
-            //        @"grant_type=authorization_code";
-            //---
-            Byte[] postBytes = Encoding.UTF8.GetBytes(postData);
-            String address = "https://accounts.google.com/o/oauth2/token";
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(address));
-            request.Method = "POST";
-            request.KeepAlive = true;
-            request.ProtocolVersion = HttpVersion.Version10;
+                Byte[] postBytes = Encoding.UTF8.GetBytes(postData);
+                String address = "https://accounts.google.com/o/oauth2/token";
 
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = postBytes.Length;
-            Stream requestStream = (Stream)request.GetRequestStream();
-            requestStream.Write(postBytes, 0, postBytes.Length);
-            requestStream.Close();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(address));
+                request.Method = "POST";
+                request.KeepAlive = true;
+                request.ProtocolVersion = HttpVersion.Version10;
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            
-            String text = (new StreamReader(response.GetResponseStream())).ReadToEnd();
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = postBytes.Length;
+                Stream requestStream = (Stream)request.GetRequestStream();
+                requestStream.Write(postBytes, 0, postBytes.Length);
+                requestStream.Close();
 
-            pars = (Dictionary<string, object>) JavascriptUtils.DeserializeJson(text);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
+                String text = (new StreamReader(response.GetResponseStream())).ReadToEnd();
+
+                pars = (Dictionary<string, object>)JavascriptUtils.DeserializeJson(text);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error asking for token ... ", ex);
+            }            
         }
 
         public enum WebMethod

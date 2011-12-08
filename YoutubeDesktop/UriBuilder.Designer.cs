@@ -89,9 +89,10 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        protected internal System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        protected internal System.Windows.Forms.Panel panel1;
+        protected internal System.Windows.Forms.TextBox textBox1;
+        protected internal System.Windows.Forms.Label label1;
+
     }
 }

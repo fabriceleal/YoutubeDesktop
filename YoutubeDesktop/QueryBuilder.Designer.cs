@@ -195,12 +195,12 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private UriBuilder queryBuilderUserControl;
-        private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Button btQuery;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TextBox txJson;
         private PropertyGridExtra grObject;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.SplitContainer splitContainer3;
     }
 }
