@@ -10,6 +10,15 @@ namespace YoutubeDesktop.Youtube
     [EditorAttribute(typeof(RawYoutubeTypeDesigner), typeof(System.Drawing.Design.UITypeEditor))]  
     public class YoutubeAuthor : RawYoutubeType
     {
+        public object FromJson(String json)
+        {
+            // TODO: test this ...
+            RootKey = "author";
+            Data = JavascriptUtils.DeserializeJson(json);
+
+            return this;
+        }
+
         internal YoutubeAuthor(object rawData)
             : base(rawData)
         {

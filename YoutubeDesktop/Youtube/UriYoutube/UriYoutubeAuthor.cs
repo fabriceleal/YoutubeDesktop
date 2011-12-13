@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using YoutubeDesktop.Youtube.Factory;
 
 namespace YoutubeDesktop.Youtube.UriYoutube
 {
@@ -12,20 +13,23 @@ namespace YoutubeDesktop.Youtube.UriYoutube
 
         public override RawYoutubeType DoQuery()
         {
-            // TODO: Implement
-            return null;
+            YoutubeAuthor empty = new YoutubeAuthor(null);
+            return (RawYoutubeType)empty.FromJson(
+                    YoutubeWeb.CallApiMethod(
+                        YoutubeWeb.WebMethod.GET,
+                        this,
+                        null, false, YoutubeWeb.Data.Empty));
+            //---
         }
 
         public override Factory.IFactory GetFactory()
         {
-            // TODO: Implement
-            return null;
+            return new SimpleFactory(this);
         }
 
         public override IQueryUIObject GetUINavigatorObject()
         {
-            // TODO: Implement
-            return null;
+            return (IQueryUIObject)(new AuthorControl());
         }
 
     }
