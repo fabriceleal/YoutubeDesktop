@@ -35,6 +35,7 @@ namespace YoutubeDesktop.Youtube.Factory
             {
                 if (_list.ContainsKey(idx))
                 {
+                    _currentIdx = idx;
                     return _list[idx];
                 }
 
