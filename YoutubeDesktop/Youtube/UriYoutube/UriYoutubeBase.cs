@@ -9,7 +9,15 @@ using Google.GData.Client;
 namespace YoutubeDesktop.Youtube.UriYoutube
 {
 
-    // Base Class
+    /// <summary>
+    /// Base class for representing an object that maps to a resource in youtube.
+    /// This object is a "temporary" representation of that resource: you can retrieve 
+    /// that object by calling DoQuery(); 
+    /// Each object will have a graphical representation in this application; 
+    /// that representation can be retrieved by calling GetUINavigatorObject();
+    /// this object will use a Factory for asking for resources; this factory implements
+    /// functionality such as caching or paging, and can be retrieved by calling GetFactory()
+    /// </summary>
     public abstract class UriYoutubeBase
     {
 
