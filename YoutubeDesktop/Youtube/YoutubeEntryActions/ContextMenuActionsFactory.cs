@@ -14,10 +14,7 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
 
         public ContextMenuActionsFactory(YoutubeObject operations)
         {
-            // TODO: List methods in operations to get all alowed operations
-
-
-            // TODO: Check arguments. Extra UI may be needed to fill all of methods parameters
+            // List methods in operations to get all alowed operations            
             Type t = operations.GetType();
             Type attrType = typeof(AttributeMethodCtx);
             var methods = from m in t.GetMethods()                           
@@ -28,10 +25,15 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
             _theStrip = new ContextMenuStrip();
 
             foreach(var method in methods){
-                ToolStripItem item = _theStrip.Items.Add("item01");
+                ToolStripItem item = _theStrip.Items.Add(
+                        ((AttributeMethodCtx) method.Attributes[0]).Label);
+                
                 item.Click += delegate(object sender, EventArgs e)
                 {
+                    // TODO: Check arguments. Extra UI may be needed to fill all of methods parameters
 
+                    object[] context = new object[] { };
+                    method.Method.Invoke(operations, context);
                 };
             }            
         }
