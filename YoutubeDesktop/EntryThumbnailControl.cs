@@ -160,7 +160,7 @@ namespace YoutubeDesktop
         {
             if(LinkClicked != null){
                 // AUTHOR
-                LinkClicked(this, new QueryAskedEventArgs(null, true));
+                LinkClicked(this, new QueryAskedEventArgs(new UriYoutubeAuthor((string)_video.Author[0].Uri), true));
             }
         }
 
