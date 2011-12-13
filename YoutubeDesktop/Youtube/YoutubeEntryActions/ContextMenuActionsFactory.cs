@@ -19,18 +19,21 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
 
             // TODO: Check arguments. Extra UI may be needed to fill all of methods parameters
             Type t = operations.GetType();
-            var methods = from m in t.GetMethods() 
-                          select m;
-                          
+            Type attrType = typeof(AttributeMethodCtx);
+            var methods = from m in t.GetMethods()                           
+                          select new { 
+                              Method = m, 
+                              Attributes = m.GetCustomAttributes(attrType, true) };
 
-            // ...
             _theStrip = new ContextMenuStrip();
 
-            ToolStripItem item = _theStrip.Items.Add("item01");
-            item.Click += delegate(object sender, EventArgs e){
+            foreach(var method in methods){
+                ToolStripItem item = _theStrip.Items.Add("item01");
+                item.Click += delegate(object sender, EventArgs e)
+                {
 
-            };
-            
+                };
+            }            
         }
 
         public ContextMenuStrip ContextMenuStrip
