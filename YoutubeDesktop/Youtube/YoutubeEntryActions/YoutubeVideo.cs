@@ -29,6 +29,14 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
             return action.Execute();
         }
 
+        [AttributeMethodCtx("Add to Playlist with position")]
+        public object AddToPlaylistWithPosition(YoutubeUserPlaylist pl, int position)
+        {
+            PlaylistVideoAdd action = new PlaylistVideoAdd(position, Id, pl.Id);
+
+            return action.Execute();
+        }
+
         [AttributeMethodCtx("Copy Url to Clipboard")]
         public object CopyUrlToClipboard()
         {

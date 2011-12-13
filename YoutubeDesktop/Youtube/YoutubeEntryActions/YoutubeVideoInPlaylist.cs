@@ -13,14 +13,6 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
         public YoutubeVideoInPlaylist(string videoId, YoutubeUserPlaylist playlist, YoutubeEntry raw) : base(videoId, raw) {
             _playlist = playlist;
         }
-        
-        [AttributeMethodCtx("Add to this Playlist with position")]
-        public object AddToPlaylistWithPosition(int position)
-        {
-            PlaylistVideoAdd action = new PlaylistVideoAdd(position, Id, _playlist.Id);
-
-            return action.Execute();
-        }
 
         [AttributeMethodCtx("Remove from this Playlist")]
         public object RemoveFromPlaylist()

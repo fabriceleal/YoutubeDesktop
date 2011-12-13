@@ -11,7 +11,6 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
     {
         private ContextMenuStrip _theStrip;
 
-
         public ContextMenuActionsFactory(YoutubeObject operations)
         {
             // List methods in operations to get all alowed operations            
@@ -24,16 +23,24 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
 
             _theStrip = new ContextMenuStrip();
 
-            foreach(var method in methods){
+            foreach(var met in methods){
                 ToolStripItem item = _theStrip.Items.Add(
-                        ((AttributeMethodCtx) method.Attributes[0]).Label);
+                        ((AttributeMethodCtx) met.Attributes[0]).Label);
                 
                 item.Click += delegate(object sender, EventArgs e)
                 {
-                    // TODO: Check arguments. Extra UI may be needed to fill all of methods parameters
+                    // TODO: Check arguments. Extra UI may be needed to fill all of methods parameters ...
+                    ParameterInfo[] parameters = met.Method.GetParameters();
+                    List<object> args = new List<object>();
+                    foreach (ParameterInfo par in parameters)
+                    {
+                        // TODO: For types, open UI "editor"
+                        // * pick a Personal playlist
+                        // * write an int
 
-                    object[] context = new object[] { };
-                    method.Method.Invoke(operations, context);
+                    }
+                                        
+                    met.Method.Invoke(operations, args.ToArray());
                 };
             }            
         }
