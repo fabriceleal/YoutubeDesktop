@@ -16,22 +16,22 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
         {
             // TODO: List methods in operations to get all alowed operations
 
+
             // TODO: Check arguments. Extra UI may be needed to fill all of methods parameters
+            Type t = operations.GetType();
+            var methods = from m in t.GetMethods() 
+                          select m;
+                          
 
             // ...
             _theStrip = new ContextMenuStrip();
 
             ToolStripItem item = _theStrip.Items.Add("item01");
-            item.Click += new EventHandler(item_Click);
+            item.Click += delegate(object sender, EventArgs e){
+
+            };
             
         }
-
-        private void item_Click(object sender, EventArgs e)
-        {
-            // Generic handler
-            
-        }
-
 
         public ContextMenuStrip ContextMenuStrip
         {

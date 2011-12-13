@@ -23,6 +23,7 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
         public YoutubeObject(string id, RawYoutubeType raw) { _id = id; _raw = raw; }
 
 
+        [AttributeMethodCtx("Open Object")]
         public object OpenObject()
         {
             (new GridObject(Raw)).ShowDialog();

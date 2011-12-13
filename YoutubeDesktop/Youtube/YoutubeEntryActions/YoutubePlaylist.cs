@@ -18,6 +18,7 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
         
         public YoutubePlaylist(string playlistId, YoutubeFeed raw) : base(playlistId, raw) { }
 
+        [AttributeMethodCtx("Copy Url to Clipboard")]
         public object CopyUrlToClipboard()
         {            
             MessageBox.Show("Doooooh!!! >:(");

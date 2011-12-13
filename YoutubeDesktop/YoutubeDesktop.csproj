@@ -116,6 +116,7 @@
     <Compile Include="VideoControl.Designer.cs">
       <DependentUpon>VideoControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Youtube\YoutubeEntryActions\AttributeMethodCtx.cs" />
     <Compile Include="Youtube\YoutubeEntryActions\ContextMenuActionsFactory.cs" />
     <Compile Include="Youtube\PlaylistOperations\PlaylistOperation.cs">
       <SubType>Code</SubType>

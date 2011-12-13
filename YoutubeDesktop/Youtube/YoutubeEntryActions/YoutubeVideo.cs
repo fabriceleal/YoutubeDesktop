@@ -21,6 +21,7 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
 
         // ******* Generic youtube video actions *************
 
+        [AttributeMethodCtx("Add to Playlist")]
         public object AddToPlaylist(YoutubePlaylist pl)
         {
             PlaylistVideoAdd action = new PlaylistVideoAdd(-1, Id, pl.Id);
@@ -28,7 +29,7 @@ namespace YoutubeDesktop.Youtube.YoutubeEntryActions
             return action.Execute();
         }
 
-
+        [AttributeMethodCtx("Copy Url to Clipboard")]
         public object CopyUrlToClipboard()
         {
             Clipboard.SetText((string)((YoutubeEntry)Raw).MediaGroup.Player[0].Url, TextDataFormat.Text);
