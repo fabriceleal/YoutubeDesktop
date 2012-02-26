@@ -7,8 +7,13 @@ using System.ComponentModel;
 
 namespace YoutubeDesktop.Youtube
 {
+    /// <summary>
+    /// Base class for handling the dictionary of strings to object representation of
+    /// javascript structures by the Noesis library.
+    /// </summary>
     public class RawYoutubeType
     {
+
         public string RootKey { get { return root; } protected set { root = value; } }
 
         public object Data { get { return data; } protected set { data = value; } }
@@ -63,6 +68,20 @@ namespace YoutubeDesktop.Youtube
         }
 
         // -----GetByKey-----
+
+        /// <summary>
+        /// Gets the value of key in the object o, considered a dictionary. In javascript,
+        /// is equivalent to calling o.key as an attribute getter.
+        /// </summary>
+        /// <param name="o">The object to search, used as a dictionary</param>
+        /// <param name="key">The key to look up.</param>
+        /// <remarks>
+        /// This function returns null if the object as not been specified,
+        /// or if the key is null, or if the object specified is not a dictionary 
+        /// of string to object, or if the dictionary itself doesn't contains the key.
+        /// Otherwise, it will return the value of the key in the dictionary.
+        /// </remarks>
+        /// <returns></returns>
         public static object GetByKey(object o, string key)
         {
             if (o == null)
@@ -81,12 +100,30 @@ namespace YoutubeDesktop.Youtube
             return _wrk[key];
         }
 
+        /// <summary>
+        /// Calls the GetByKey(object, string) using the internal data as the object
+        /// to search.
+        /// </summary>
+        /// <remarks>
+        /// Look at the documentation of GetByKey(object, string).
+        /// </remarks>
         public object GetByKey(string key)
         {
             return GetByKey(data, key);
         }
 
         // -----GetByIndex-----
+
+        /// <summary>
+        /// Gets the value of index in the object o, considered an array. In javascript,
+        /// is equivalent to calling o[idx].
+        /// </summary>
+        /// <param name="o">The object to search, used as an array.</param>
+        /// <param name="idx">The index to look up.</param>
+        /// This function returns null if the object as not been specified,
+        /// or if the idx is less than zero, or if the object specified is not an array 
+        /// of objects, or if the array itself doesn't contains the index.
+        /// Otherwise, it will return the value of the index in the array.
         public static object GetByIndex(object o, int idx)
         {
             if (o == null)
@@ -102,9 +139,16 @@ namespace YoutubeDesktop.Youtube
             if (_wrk.Length <= idx)
                 return null;
 
-            return (_wrk)[idx];
+            return _wrk[idx];
         }
 
+        /// <summary>
+        /// Calls the GetByIndex(object, int) using the internal data as the object
+        /// to search.
+        /// </summary>
+        /// <remarks>
+        /// Look at the documentation of GetByIndex(object, int).
+        /// </remarks>
         public object GetByIndex(int idx)
         {
             return GetByIndex(data, idx);
