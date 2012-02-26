@@ -169,7 +169,12 @@ namespace YoutubeDesktop.Youtube
             root = rootElem;
         }
 
-
+        /// <summary>
+        /// Gets a RawYoutubeType instance wrapping the result of the lookup of the 
+        /// attribute with the name of the given key in the internal object.
+        /// </summary>
+        /// <param name="key">The key to lookup as an attribute.</param>
+        /// <returns>A RawYoutubeTube instance with the data fetched.</returns>
         public RawYoutubeType this[string key]
         {
             get
@@ -180,6 +185,12 @@ namespace YoutubeDesktop.Youtube
             }
         }
 
+        /// <summary>
+        /// Gets a RawYoutubeType instance wrapping the result of the lookup of the 
+        /// element with the given index in the internal object.
+        /// </summary>
+        /// <param name="idx">The index to lookup.</param>
+        /// <returns>A RawYoutubeTube instance with the data fetched.</returns>
         public RawYoutubeType this[int idx]
         {
             get
