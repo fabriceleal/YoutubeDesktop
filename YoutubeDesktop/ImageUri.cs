@@ -8,6 +8,10 @@ using System.IO;
 
 namespace YoutubeDesktop
 {
+    /// <summary>
+    /// Class that encapsulates an image that can be retrieved by an uri;
+    /// the image is cached.
+    /// </summary>
     public class ImageUri
     {
         private Image _image = null;
