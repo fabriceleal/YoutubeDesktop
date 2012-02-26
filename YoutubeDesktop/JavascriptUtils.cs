@@ -6,9 +6,21 @@ using Noesis.Javascript;
 
 namespace YoutubeDesktop
 {
+
+    /// <summary>
+    /// Helper class to serialize and deserialize CLR structures to JSON.
+    /// Uses the Noesis.Javascript dll.
+    /// </summary>
     public class JavascriptUtils
     {
 
+        /// <summary>
+        /// Retrieves the JSON representation of a CLR object, 
+        /// consisting of a dictionary of strings to objects.
+        /// </summary>
+        /// <param name="o">CLR object, 
+        /// consisting of a dictionary of strings (attributes) to objects (values).</param>
+        /// <returns>JSON representation, as string</returns>
         public static string SerializeObject(object o)
         {
             JavascriptContext context = null;
@@ -17,9 +29,6 @@ namespace YoutubeDesktop
                 if (o == null)
                     return "";
 
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-
                 context = new JavascriptContext();
 
                 context.SetParameter("arg1", o);
@@ -27,6 +36,10 @@ namespace YoutubeDesktop
                 context.Run(@" obj = JSON.stringify(arg1, null); ");
 
                 return (string)context.GetParameter("obj");
+            }
+            catch (AccessViolationException)
+            {
+                throw new Exception("Access Violation Exception. Probably you should restart the app ...");
             }
             catch (Exception ex)
             {
@@ -43,6 +56,13 @@ namespace YoutubeDesktop
             }
         }
 
+        /// <summary>
+        /// Retrieves the CLR representation, consisting of a dictionary of strings to objects, 
+        /// of a JSON string.
+        /// </summary>
+        /// <param name="o">JSON representation, as string</param>
+        /// <returns>CLR object, consisting of a dictionary 
+        /// of strings (attributes) to objects (values).</returns>
         public static object DeserializeJson(string jsonString)
         {
             JavascriptContext context = null;
@@ -50,9 +70,6 @@ namespace YoutubeDesktop
             {
                 if (string.IsNullOrEmpty(jsonString))
                     return null;
-
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
 
                 context = new JavascriptContext();
 
@@ -62,9 +79,9 @@ namespace YoutubeDesktop
 
                 return context.GetParameter("obj");
             }
-            catch (AccessViolationException ave)
+            catch (AccessViolationException)
             {
-                throw new Exception("Access Violation Exception. Probabily you should restart the app ...");
+                throw new Exception("Access Violation Exception. Probably you should restart the app ...");
             }
             catch (Exception ex)
             {
