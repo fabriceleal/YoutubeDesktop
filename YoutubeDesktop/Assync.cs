@@ -7,6 +7,15 @@ using System.Runtime.Remoting.Messaging;
 
 namespace YoutubeDesktop
 {
+    /// <summary>
+    /// Class to manage asynchronous filling of controls. One can only update
+    /// a control's property in code executed inside the control's thread, so
+    /// the function for getting a value is executed asynchronously, but the 
+    /// callback, responsible for using the value to change control's state, 
+    /// is executed in the control's thread.
+    /// </summary>
+    /// <typeparam name="T">The return value of the function used to get the 
+    /// desired value, at that will be passed to the callback.</typeparam>
     public class Assync<T>
     {
         private Action<T> _callback;
@@ -14,6 +23,16 @@ namespace YoutubeDesktop
         private Func<T> _function;
         private Action<Exception> _onException;
 
+        /// <summary>
+        /// Create and execute an Assync instance. In case of any exception, a messagebox will be prompted.
+        /// </summary>
+        /// <typeparam name="O">The return value of the function used to get the 
+        /// desired value, at that will be passed to the callback.</typeparam>
+        /// <param name="container">The control that will be used to supply the UI thread to 
+        /// execute callback.</param>
+        /// <param name="function">Function for getting a value desired, executed async.</param>
+        /// <param name="callback">Callback that will receive the value returned by function, 
+        /// executed in container's thread (waits if it's handle is not created yet). </param>
         public static void Execute<O>(Control container,
                 Func<O> function,
                 Action<O> callback)
@@ -22,6 +41,19 @@ namespace YoutubeDesktop
             a.Execute();
         }
 
+        /// <summary>
+        /// Create and execute an Assync instance, 
+        /// with an action for handling any exception that might occur.
+        /// </summary>
+        /// <typeparam name="O">The return value of the function used to get the 
+        /// desired value, at that will be passed to the callback.</typeparam>
+        /// <param name="container">The control that will be used to supply the UI thread to 
+        /// execute callback.</param>
+        /// <param name="function">Function for getting a value desired, executed async.</param>
+        /// <param name="callback">Callback that will receive the value returned by function, 
+        /// executed in container's thread (waits if it's handle is not created yet). </param>
+        /// <param name="onException">Callback that receives any exception that occured during 
+        /// the execution of function and callback.</param>
         public static void Execute<O>(Control container,
                 Func<O> function,
                 Action<O> callback,
@@ -31,12 +63,31 @@ namespace YoutubeDesktop
             a.Execute();
         }
 
+        /// <summary>
+        /// Creates a new instance of Assync. In case of any exception, a messagebox will be prompted.
+        /// </summary>
+        /// <param name="container">The control that will be used to supply the UI thread to 
+        /// execute callback.</param>
+        /// <param name="function">Function for getting a value desired, executed async.</param>
+        /// <param name="callback">Callback that will receive the value returned by function, 
+        /// executed in container's thread (waits if it's handle is not created yet). </param>
         public Assync(
                 Control container,
                 Func<T> function,
                 Action<T> callback)
             : this(container, function, callback, delegate(Exception e) { MessageBox.Show(e.Message, e.GetType().FullName); }) { }
 
+        /// <summary>
+        /// Creates a new instance of Assync, 
+        /// with an action for handling any exception that might occur.
+        /// </summary>
+        /// <param name="container">The control that will be used to supply the UI thread to 
+        /// execute callback.</param>
+        /// <param name="function">Function for getting a value desired, executed async.</param>
+        /// <param name="callback">Callback that will receive the value returned by function, 
+        /// executed in container's thread (waits if it's handle is not created yet). </param>
+        /// <param name="onException">Callback that receives any exception that occured during 
+        /// the execution of function and callback.</param>
         public Assync(
                 Control container,
                 Func<T> function,
@@ -50,11 +101,19 @@ namespace YoutubeDesktop
             _onException = onException;
         }
 
+        /// <summary>
+        /// Executes the function asynchronously. The result will be supplied to
+        /// another function that is executed in the container's thread.
+        /// </summary>
         public void Execute()
         {
             _function.BeginInvoke(new AsyncCallback(Callback), null);
         }
 
+        /// <summary>
+        /// Callback for the function.
+        /// </summary>
+        /// <param name="ar"></param>
         private void Callback(IAsyncResult ar)
         {
             AsyncResult res = (AsyncResult)ar;
