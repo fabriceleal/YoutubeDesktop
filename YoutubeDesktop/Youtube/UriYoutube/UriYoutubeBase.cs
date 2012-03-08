@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using YoutubeDesktop.Youtube.Factory;
 using System.Web;
-using Google.GData.Client;
 
 namespace YoutubeDesktop.Youtube.UriYoutube
 {

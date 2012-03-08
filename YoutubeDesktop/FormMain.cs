@@ -6,12 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Google.GData.Client;
-using Google.GData.Extensions;
-using Google.GData.YouTube;
-using Google.GData.Extensions.MediaRss;
-using Google.YouTube;
-
 using System.Web;
 using System.Net;
 using System.IO;
@@ -26,10 +20,10 @@ namespace YoutubeDesktop
 
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace YoutubeDesktop
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -250,14 +250,14 @@
             this.ListBox1.Size = new System.Drawing.Size(887, 121);
             this.ListBox1.TabIndex = 4;
             // 
-            // Form1
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 726);
             this.Controls.Add(this.TabControl1);
             this.Controls.Add(this.ListBox1);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.TabPage1.ResumeLayout(false);
