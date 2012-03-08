@@ -1,10 +1,5 @@
 YoutubeDesktop
 ==============
+Proof of concept of using a web API in a Windows Forms Aplication.
 
-The goal of this project is to exemplify the usage of the Youtube API without using the Google's .NET SDK in a Windows Forms Aplication.
-
-
-TODO
-----
-
-* the project uses the Google's SDK only to treat URLs, but this can be implemented.
+The goal of this project is to show the usage of the Youtube API without using the Google's .NET SDK in a Windows Forms Aplication.
