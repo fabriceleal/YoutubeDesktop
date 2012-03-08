@@ -1,8 +1,7 @@
 YoutubeDesktop
 ==============
 
-The goal of this project is to exemplify the usage of the Youtube API without using the Google's .NET SDK 
-in a Windows Forms Aplication.
+The goal of this project is to exemplify the usage of the Youtube API without using the Google's .NET SDK in a Windows Forms Aplication.
 
 
 TODO
